@@ -1,10 +1,8 @@
 package com.temisone.imgboard.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Entity
@@ -21,9 +19,5 @@ public class BoardEntity {
     private String imgname;
 
     private String imgpath;
-
-    private String filename;
-
-    private String filepath;
 
 }
