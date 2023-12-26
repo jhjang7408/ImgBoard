@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>모든 게시글</h1>
+
+<table>
+    <thread>
+        <tr>
+            <th>글 번 호</th>
+            <th>이미지</th>
+            <th>제 목</th>
+        </tr>
+    </thread>
+
+    <tbody>
+        <tr th:each="afafaf : ${list}">
+            <td th:text="${afafaf.id}"></td>
+            <td>
+                <img th:src="${afafaf.imgpath}" width="70" height="70"/>
+            </td>
+            <td th:text="${afafaf.title}"></td>
+        </tr>
+    </tbody>
+
+</table>
+
+<br>
+<br>
+<br>
+
+<a href="/board/write">글 쓰 기</a>
+
+</body>
+</html>
