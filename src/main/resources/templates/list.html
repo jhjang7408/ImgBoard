@@ -19,11 +19,15 @@
 
     <tbody>
         <tr th:each="afafaf : ${list}">
-            <td th:text="${afafaf.id}"></td>
+            <td>
+                <a th:href="@{/board/{id}(id=${afafaf.id})}" th:text="${afafaf.id}"></a>
+            </td>
             <td>
                 <img th:src="${afafaf.imgpath}" width="70" height="70"/>
             </td>
-            <td th:text="${afafaf.title}"></td>
+            <td>
+                <a th:href="@{/board/{id}(id=${afafaf.id})}" th:text="${afafaf.title}"></a>
+            </td>
         </tr>
     </tbody>
 

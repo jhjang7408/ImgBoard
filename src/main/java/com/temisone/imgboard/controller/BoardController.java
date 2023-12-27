@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,7 +38,7 @@ public class BoardController {
 
         boardService.write(boardEntity, file);
 
-        return "redirect:/board";
+        return "redirect:/board/list";
     }
 
 
@@ -48,5 +50,25 @@ public class BoardController {
 
         return "list";
     }
+
+
+    @GetMapping("/board/{id}")
+    public String boardView(@PathVariable int id, Model model){
+
+        Optional<BoardEntity> boardEntity = boardService.findById(id);
+
+        model.addAttribute("read", boardEntity.get());
+
+        return "view";
+    }
+
+
+    @GetMapping("/board/delete/{id}")
+    public String boardDelete(@PathVariable int id){
+        boardService.delete(id);
+
+        return "redirect:/board/list";
+    }
+
 
 }
