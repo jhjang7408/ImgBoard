@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>게시물 보기</h1>
+
+
+<form th:action="@{|/board/update/${chchch.id}|}" method="post" enctype="multipart/form-data">
+    글번호<br>
+    <input type="text" th:value="${chchch.id}" name="id" readonly>
+
+    <br><br>
+
+    제목<br>
+    <input type="text" th:value="${chchch.title}" name="title">
+
+    <br><br>
+
+    내용<br>
+    <textarea th:text="${chchch.content}" name="content"></textarea>
+
+    <br><br>
+
+    기존 사진<br>
+    <img th:src="${chchch.imgpath}" width="200" height="200"/>
+
+    <br><br>
+
+    새로운 사진<br>
+    <input type="file" name="file">
+
+    <button type="submit">수정하기</button>
+</form>
+
+<br><br>
+
+<a th:href="@{|/board/delete/${chchch.id}|}">삭제하기</a>
+<br>
+<a href="/board/list">목록으로 돌아가기</a>
+
+
+</body>
+</html>

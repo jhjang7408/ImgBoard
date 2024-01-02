@@ -22,12 +22,12 @@ public class BoardService {
 
         String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static";
 
-        UUID uuid = UUID.randomUUID();
+        UUID uuid1 = UUID.randomUUID();
 
-        String imgname = uuid + "_" + file.getOriginalFilename();
+        String imgname = uuid1 + "_" + file.getOriginalFilename();
 
         File saveFile = new File(projectPath, imgname);
-
+        System.out.println("ttttttttttttttttttt==========" + saveFile);
         file.transferTo(saveFile);
 
         boardEntity.setImgname(imgname);
@@ -53,6 +53,26 @@ public class BoardService {
     }
 
 
+    public void update(BoardEntity boardEntity){
+        boardRepository.save(boardEntity);
+    }
 
 
+    public void update2(BoardEntity boardEntity, MultipartFile file) throws IOException {
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static";
+
+        UUID uuid = UUID.randomUUID();
+
+        String imgname = uuid + "_" + file.getOriginalFilename();
+
+        File saveFile = new File(projectPath, imgname);
+
+        file.transferTo(saveFile);
+
+        boardEntity.setImgname(imgname);
+
+        boardEntity.setImgpath("/" + imgname);
+
+        boardRepository.save(boardEntity);
+    }
 }
